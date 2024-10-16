@@ -3,6 +3,24 @@ let operand1 = 0;
 let operand2 = 0;
 let operator = '';
 
+//store variable for display
+let displayValue = "";
+
+//obtain references to number buttons
+const numButtons = document.querySelectorAll(".number");
+
+//obtain refernce to display
+const display = document.querySelector(".display");
+
+//let number buttons modify display
+numButtons.forEach((button)=>{
+    button.addEventListener("click", ()=>{
+        displayValue += button.textContent;
+        display.textContent = displayValue;
+    });
+});
+
+
 function operate(num1, num2, op){
     //call appropriate operation function based on input operation
     switch (op) {
