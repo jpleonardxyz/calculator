@@ -16,6 +16,7 @@ const display = document.querySelector(".display");
 numButtons.forEach((button)=>{
     button.addEventListener("click", ()=>{
         displayValue += button.textContent;
+        console.log("displayValue " + displayValue);
         display.textContent = displayValue;
     });
 });
@@ -27,11 +28,37 @@ const opButtons = document.querySelectorAll(".operation");
 opButtons.forEach((button)=>{
     button.addEventListener("click", ()=>{
         displayValue === '' ? operand1=0: operand1 = parseInt(displayValue);
+        console.log("operand1 " + operand1)
         operator = button.textContent;
+        displayValue = '';
+        console.log("operand1 after operation press " + operand1);
     })
 });
 
+//obtain reference and set logic for equals button
+const equals = document.querySelector('#equals');
 
+equals.addEventListener('click', ()=> {
+    displayValue === '' ? operand2=0: operand2 = parseInt(displayValue);
+    let result = operate(operand1, operand2, operator);
+    console.log("operand1 " + operand1);
+    console.log("operand2 " + operand2);
+    console.log(result);
+    displayValue = result;
+    display.textContent = result;
+    operand1 = result;
+});
+
+//obtain refernece and set logic for clear button
+const btnClear = document.querySelector('#clear');
+
+btnClear.addEventListener('click', ()=>{
+    operand1 = 0;
+    operand2 = 0;
+    operator = '';
+    displayValue = '';
+    display.textContent = '0';
+})
 
 
 function operate(num1, num2, op){
