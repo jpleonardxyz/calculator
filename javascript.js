@@ -20,6 +20,19 @@ numButtons.forEach((button)=>{
     });
 });
 
+//obtain reference to operator buttons
+const opButtons = document.querySelectorAll(".operation");
+
+//add event to operation button
+opButtons.forEach((button)=>{
+    button.addEventListener("click", ()=>{
+        displayValue === '' ? operand1=0: operand1 = parseInt(displayValue);
+        operator = button.textContent;
+    })
+});
+
+
+
 
 function operate(num1, num2, op){
     //call appropriate operation function based on input operation
